@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Message from './Message';
 import './Chat.css';
 
@@ -7,14 +7,31 @@ const defaultProfilePicture = 'src/assets/user icon.jpg';
 
 const users = [
   { id: 1, name: 'Alice', profilePicture: 'src/assets/user icon.jpg' },
-  { id: 2, name: 'Bob', profilePicture: 'src/assets/user icon.jpg' },
-  { id: 3, name: 'Charlie', profilePicture: 'src/assets/user icon.jpg'}
+  { id: 2, name: 'Bob', profilePicture:'src/assets/user icon.jpg' },
+  { id: 3, name: 'Charlie', profilePicture:'src/assets/user icon.jpg'}
 ];
 
 const Chat = ({ onLogout }) => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
   const [selectedUser, setSelectedUser] = useState(users[0]);
+
+  // Simulate receiving messages after a delay
+  useEffect(() => {
+    const receiveMessage = () => {
+      // Simulated received messages
+      const receivedMessage = { text: 'Hello!', sender: selectedUser.name, profilePicture: selectedUser.profilePicture };
+      setMessages(prevMessages => [...prevMessages, receivedMessage]);
+      // Scroll to the bottom of the messages
+      document.querySelector('.message-list').scrollTop = document.querySelector('.message-list').scrollHeight;
+    };
+
+    const receiveMessagesInterval = setInterval(() => {
+      receiveMessage();
+    }, 3000); // Simulate receiving messages every 3 seconds
+
+    return () => clearInterval(receiveMessagesInterval);
+  }, [selectedUser]);
 
   const handleSend = () => {
     if (message.trim()) {
@@ -23,6 +40,10 @@ const Chat = ({ onLogout }) => {
       // Scroll to the bottom of the messages
       document.querySelector('.message-list').scrollTop = document.querySelector('.message-list').scrollHeight;
     }
+  };
+
+  const handleEmojiClick = (emoji) => {
+    setMessage(message + emoji); // Append selected emoji to the current message
   };
 
   return (
@@ -63,6 +84,12 @@ const Chat = ({ onLogout }) => {
               placeholder="Type your message..."
             />
             <button onClick={handleSend}>Send</button>
+          </div>
+          <div className="emoji-picker">
+            {/* Example emojis, replace with your preferred emoji library */}
+            <span role="img" aria-label="Grinning Face" onClick={() => handleEmojiClick('😀')}>😀</span>
+            <span role="img" aria-label="Heart Eyes" onClick={() => handleEmojiClick('😍')}>😍</span>
+            <span role="img" aria-label="Thumbs Up" onClick={() => handleEmojiClick('👍')}>👍</span>
           </div>
         </div>
       </div>
