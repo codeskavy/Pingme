@@ -13,7 +13,9 @@ const Login = ({ onLogin }) => {
   };
 
   return (
-    <div className="container">
+    <>
+  
+     <div className="container">
       <h2>{isSignUp ? 'Sign Up' : 'Sign In'}</h2>
       <form onSubmit={handleLogin}>
         <div>
@@ -47,6 +49,8 @@ const Login = ({ onLogin }) => {
         </div>
       </form>
     </div>
+    </>
+   
   );
 };
 
