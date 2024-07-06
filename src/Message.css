@@ -1,0 +1,29 @@
+/* Message.css */
+
+.message {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    max-width: 60%;
+  }
+  
+  .message.sent {
+    background-color: #DCF8C6; /* Green for sent messages */
+    align-self: flex-end;
+    margin-left: auto;
+  }
+  
+  .message.received {
+    background-color: #E9ECEF; /* Light gray for received messages */
+    align-self: flex-start;
+  }
+  
+  .message img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  

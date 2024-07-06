@@ -1,15 +1,11 @@
 import React from 'react';
+import './Message.css';  // Ensure Message.css is present
 
 const Message = ({ text, sender, profilePicture }) => {
-  const isSentMessage = sender === 'You';
-
   return (
-    <div className={`message ${isSentMessage ? 'sent' : 'received'}`}>
-      <img src={profilePicture} alt={sender} className="profile-picture" />
-      <div className="message-content">
-        <span className="message-text">{text}</span>
-        <span className="message-sender">{sender}</span>
-      </div>
+    <div className={`message ${sender === 'You' ? 'sent' : 'received'}`}>
+      {sender === 'You' ? null : <img src={profilePicture} alt={sender} className="profile-picture" />}
+      <div>{text}</div>
     </div>
   );
 };
