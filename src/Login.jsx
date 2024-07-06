@@ -9,7 +9,7 @@ const Login = ({ onLogin }) => {
   const handleLogin = (event) => {
     event.preventDefault();
     console.log('Username:', username, 'Password:', password);
-    onLogin();  // Trigger the onLogin function from App
+    onLogin();  
   };
 
   return (
