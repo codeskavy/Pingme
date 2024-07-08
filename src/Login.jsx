@@ -14,7 +14,9 @@ const Login = ({ onLogin }) => {
 
   return (
     <>
-  
+    <div className='left'>
+      <img></img>
+    </div>
      <div className="container">
       <h2>{isSignUp ? 'Sign Up' : 'Sign In'}</h2>
       <form onSubmit={handleLogin}>

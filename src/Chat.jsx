@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Message from './Message';
 import './Chat.css';
 
-const defaultProfilePicture = 'src/assets/user icon.jpg';
+const defaultProfilePicture = 'src/assets/user-icon.jpg';
 
 const users = [
   { id: 1, name: 'Alice', profilePicture: defaultProfilePicture },
