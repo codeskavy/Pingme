@@ -17,7 +17,7 @@
   h2 {
     margin: 0;
     font-size: 24px;
-    color: #00796b; /* Teal color for a cute look */
+    color: #45a049; /* Teal color for a cute look */
     font-weight: bold;
     margin-bottom: 20px; /* Space below heading */
   }
@@ -47,7 +47,7 @@
     margin-top: 10px;
     border: none;
     border-radius: 8px;
-    background-color: #00796b; /* Teal background for the button */
+    background-color: #45a049; /* Teal background for the button */
     color: white;
     font-size: 16px;
     cursor: pointer;

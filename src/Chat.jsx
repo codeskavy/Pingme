@@ -1,8 +1,9 @@
+// src/Chat.jsx
 import React, { useState, useEffect } from 'react';
 import Message from './Message';
 import './Chat.css';
 
-const defaultProfilePicture = 'src/assets/user icon.jpg'; 
+const defaultProfilePicture = 'src/assets/user icon.jpg';
 
 const users = [
   { id: 1, name: 'Alice', profilePicture: defaultProfilePicture },
@@ -10,7 +11,7 @@ const users = [
   { id: 3, name: 'Charlie', profilePicture: defaultProfilePicture }
 ];
 
-const Chat = ({ onLogout }) => {
+const Chat = ({ onLogout, onProfile }) => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
   const [selectedUser, setSelectedUser] = useState(users[0]);
@@ -45,6 +46,7 @@ const Chat = ({ onLogout }) => {
     <div className="container chat-container">
       <div className="chat-header">
         <h2>Chat with {selectedUser.name}</h2>
+        <button className="profile-button" onClick={() => onProfile(selectedUser)}>Profile</button>
         <button className="logout-button" onClick={onLogout}>Logout</button>
       </div>
       <div className="chat-body">

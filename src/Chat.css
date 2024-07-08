@@ -3,7 +3,7 @@
 .chat-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 80vh;
   background-color: #f0f4f8; /* Light blue background */
   padding: 10px;
   box-sizing: border-box;
@@ -66,7 +66,7 @@ h2 {
 }
 
 .user.active {
-  background-color: #00796b; /* Teal for the active user */
+  background-color: #45a049; /* Teal for the active user */
   color: white;
 }
 
@@ -145,14 +145,14 @@ h2 {
   padding: 15px 20px; /* Increased padding for the button */
   border: none;
   border-radius: 8px;
-  background-color: #00796b;
+  background-color: #45a049;
   color: white;
   cursor: pointer;
   font-size: 16px;
 }
 
 .chat-input button:hover {
-  background-color: #004d40;
+  background-color: #144717;
 }
 
 .emoji-picker {
