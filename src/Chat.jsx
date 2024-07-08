@@ -6,9 +6,9 @@ import './Chat.css';
 const defaultProfilePicture = 'src/assets/user-icon.jpg';
 
 const users = [
-  { id: 1, name: 'Alice', profilePicture: defaultProfilePicture },
-  { id: 2, name: 'Bob', profilePicture: defaultProfilePicture },
-  { id: 3, name: 'Charlie', profilePicture: defaultProfilePicture }
+  { id: 1, name: 'Alice', profilePicture: 'src/assets/user-icon.jpg'},
+  { id: 2, name: 'Bob', profilePicture: 'src/assets/user-icon.jpg' },
+  { id: 3, name: 'Charlie', profilePicture: 'src/assets/user-icon.jpg' }
 ];
 
 const Chat = ({ onLogout, onProfile }) => {

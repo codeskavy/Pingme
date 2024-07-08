@@ -46,6 +46,7 @@ h2 {
 /* Body of the chat, where users and messages are displayed */
 .chat-body {
   display: flex;
+  width:700px;
   flex: 1;
   overflow: hidden;
 }

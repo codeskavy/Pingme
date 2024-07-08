@@ -3,16 +3,12 @@ import React, { useState } from 'react';
 import Login from './Login';
 import Chat from './Chat';
 import ProfilePage from './ProfilePage';
-import LandingPage from './LandingPage'; // Import the LandingPage component
+import LandingPage from './LandingPage';  // Import the LandingPage component
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentPage, setCurrentPage] = useState('landing'); // landing, login, chat, profile
+  const [currentPage, setCurrentPage] = useState('landing'); // landing, chat, profile
   const [selectedUser, setSelectedUser] = useState(null);
-
-  const handleStart = () => {
-    setCurrentPage('login');
-  };
 
   const handleLogin = () => {
     setIsLoggedIn(true);
@@ -21,7 +17,7 @@ const App = () => {
 
   const handleLogout = () => {
     setIsLoggedIn(false);
-    setCurrentPage('chat');
+    setCurrentPage('landing');
   };
 
   const navigateToProfile = (user) => {
@@ -33,10 +29,14 @@ const App = () => {
     setCurrentPage('chat');
   };
 
+  const startChat = () => {
+    setCurrentPage('chat');
+  };
+
   return (
     <div className="App">
       {currentPage === 'landing' ? (
-        <LandingPage onStart={handleStart} />
+        <LandingPage onStartChat={startChat} />  // Pass the startChat function as a prop
       ) : !isLoggedIn ? (
         <Login onLogin={handleLogin} />
       ) : currentPage === 'chat' ? (

@@ -1,7 +1,7 @@
 // src/LandingPage.jsx
 import React from 'react';
 import './LandingPage.css';
-import pingMeGif from './assets/ping-me.gif'; // Import the GIF
+import chaticonGif from './assets/chat-icon.gif'; // Import the GIF
 import userIcon from './assets/user icon.jpg'; // Import the user profile icon
 
 const LandingPage = ({ onStartChat }) => {
@@ -20,7 +20,7 @@ const LandingPage = ({ onStartChat }) => {
         </nav>
       </header>
       <main className="landing-main">
-        <img src={pingMeGif} alt="Ping Me GIF" className="ping-me-gif" onClick={onStartChat} />
+        <img src={chaticonGif} alt="Ping Me GIF" className="ping-me-gif" onClick={onStartChat} />
         <h1 className="landing-title">Ping Me!</h1>
         <p className="landing-description">
           Connect with friends and family in a fun and easy way. Start chatting now!
