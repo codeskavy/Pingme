@@ -10,9 +10,9 @@ const ProfilePage = ({ user, onBackToChat, onLogout }) => {
         <button className="logout-button" onClick={onLogout}>Logout</button>
       </header>
       <main className="profile-main">
-        <img src={'src/assets/upright-woman-looking-straight-into-front_941493-1025.avif'} alt={user.name} className="profile-picture" />
+        <img src={user.profilePicture} alt={user.name} className="profile-picture" />
         <h2 className="profile-name">{user.name}</h2>
-        <p className="profile-email">Email: {user.email || 'example@example.com'}</p>
+        <p className="profile-email">Email: {user.email || 'abc@email.com'}</p>
         {/* Add more user details here */}
       </main>
     </div>

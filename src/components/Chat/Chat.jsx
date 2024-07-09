@@ -1,14 +1,13 @@
-// src/Chat.jsx
 import React, { useState, useEffect } from 'react';
 import Message from '../Message/Message';
 import './Chat.css';
 
-const defaultProfilePicture = './assets/user-icon.jpg';
+const defaultProfilePicture =  'src/assets/user-icon.jpg' ;
 
 const users = [
-  { id: 1, name: 'Alice', profilePicture: './assets/user-icon.jpg' },
-  { id: 2, name: 'Bob', profilePicture: './assets/user-icon.jpg' },
-  { id: 3, name: 'Charlie', profilePicture: './assets/user-icon.jpg' }
+  { id: 1, name: 'Alice', profilePicture: 'src/assets/user-icon.jpg' },
+  { id: 2, name: 'Bob', profilePicture:  'src/assets/user-icon.jpg'  },
+  { id: 3, name: 'Charlie', profilePicture: 'src/assets/user-icon.jpg' }
 ];
 
 const Chat = ({ onLogout, onProfile }) => {
@@ -58,7 +57,7 @@ const Chat = ({ onLogout, onProfile }) => {
               onClick={() => setSelectedUser(user)}
             >
               <img src={user.profilePicture || defaultProfilePicture} alt={user.name} className="profile-picture" />
-              {user.name}
+              <span className="user-name">{user.name}</span>
             </div>
           ))}
         </div>
@@ -85,6 +84,7 @@ const Chat = ({ onLogout, onProfile }) => {
           <div className="emoji-picker">
             <span role="img" aria-label="Grinning Face" onClick={() => handleEmojiClick('😀')}>😀</span>
             <span role="img" aria-label="Heart Eyes" onClick={() => handleEmojiClick('😍')}>😍</span>
+            <span role="img" aria-label="Red Heart" onClick={() => handleEmojiClick('❤️')}>❤️</span>git
             <span role="img" aria-label="Thumbs Up" onClick={() => handleEmojiClick('👍')}>👍</span>
           </div>
         </div>
