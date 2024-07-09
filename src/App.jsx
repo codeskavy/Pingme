@@ -1,9 +1,9 @@
 // src/App.jsx
 import React, { useState } from 'react';
-import Login from './Login';
-import Chat from './Chat';
-import ProfilePage from './ProfilePage';
-import LandingPage from './LandingPage';  // Import the LandingPage component
+import Login from './components/Login/Login';
+import Chat from './components/Chat/Chat';
+import ProfilePage from './components/ProfilePage/ProfilePage';
+import LandingPage from './components/LandingPage/LandingPage';  // Import the LandingPage component
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
