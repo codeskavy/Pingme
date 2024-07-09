@@ -84,7 +84,7 @@ const Chat = ({ onLogout, onProfile }) => {
           <div className="emoji-picker">
             <span role="img" aria-label="Grinning Face" onClick={() => handleEmojiClick('😀')}>😀</span>
             <span role="img" aria-label="Heart Eyes" onClick={() => handleEmojiClick('😍')}>😍</span>
-            <span role="img" aria-label="Red Heart" onClick={() => handleEmojiClick('❤️')}>❤️</span>git
+            <span role="img" aria-label="Red Heart" onClick={() => handleEmojiClick('❤️')}>❤️</span>
             <span role="img" aria-label="Thumbs Up" onClick={() => handleEmojiClick('👍')}>👍</span>
           </div>
         </div>
