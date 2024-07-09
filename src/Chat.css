@@ -1,256 +1,136 @@
-/* Chat.css */
-
-/* Container for the entire chat application */
+/* src/Chat.css */
 .chat-container {
   display: flex;
   flex-direction: column;
-  height: 90vh;
-  background-color: #f0f4f8; /* Light blue background */
-  padding: 20px;
-  box-sizing: border-box;
+  height: 100vh;
+  background: #f4f4f9;
+  font-family: 'Arial', sans-serif;
 }
 
-/* Header section of the chat */
 .chat-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  background: #ffffff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #ddd;
 }
 
-h2 {
-  font-size: 24px;
-  color: #00796b; /* Teal color for the header */
-  font-weight: bold;
+.chat-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
 }
 
-/* Buttons in the chat header */
-.logout-button,
-.profile-button {
-  padding: 10px 15px;
+.profile-button,
+.logout-button {
+  background: #00796b;
+  color: #fff;
   border: none;
+  padding: 10px 15px;
   border-radius: 5px;
-  background-color: #45a049; /* Green color for profile button */
-  color: white;
   cursor: pointer;
-  font-size: 16px;
   transition: background-color 0.3s ease;
 }
 
-/* Change background color on hover for both buttons */
-.logout-button:hover,
-.profile-button:hover {
-  background-color: #144717; /* Darker green on hover */
+.profile-button:hover,
+.logout-button:hover {
+  background-color: #004d40;
 }
 
-/* Body of the chat, where users and messages are displayed */
 .chat-body {
   display: flex;
-  width:700px;
   flex: 1;
   overflow: hidden;
 }
 
-/* List of users on the left side */
 .user-list {
-  width: 30%; /* Increased width for better visibility */
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  padding: 10px;
+  width: 200px;
+  background: #ffffff;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
-  position: relative; /* For positioning the search bar */
-}
-
-/* Search bar styling */
-.search-bar {
-  width:20%;
-  margin-bottom: 10px;
   padding: 10px;
-  background-color: #f1f1f1; /* Light gray background */
-  border-radius: 5px; /* Rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-right: 1px solid #ddd;
 }
 
-.search-bar input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 1rem;
-  outline: none;
-}
-
-.search-bar input:focus {
-  border-color: #007bff; /* Blue border on focus */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Blue glow */
-}
-
-/* Style for users in the list */
 .user {
   display: flex;
   align-items: center;
   padding: 10px;
-  margin-bottom: 10px;
   cursor: pointer;
-  border-radius: 8px;
   transition: background-color 0.3s ease;
 }
 
-/* Highlight the selected or searched user */
-.user.active,
-.user.highlight {
-  background-color: #45a049; /* Teal for the active or matched user */
-  color: white;
-  border: 2px solid #4CAF50; /* Green border for the search term match */
+.user:hover {
+  background: #f1f1f1;
 }
 
-/* User profile picture */
+.user.active {
+  background: #e0f7fa;
+}
+
 .profile-picture {
-  width: 50px; /* Adjusted size for better visibility */
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   margin-right: 10px;
 }
 
-/* Container for messages and input field */
+.message-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 10px;
+  background: #ffffff;
+  border-left: 1px solid #ddd;
+}
 
+.message-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+}
 
-/* Chat input field and send button */
 .chat-input {
   display: flex;
   align-items: center;
-  margin-top: 10px;
+  border-top: 1px solid #ddd;
+  padding: 10px;
+  width: 100px;
+  background: #fafafa;
 }
 
 .chat-input input {
   flex: 1;
-  padding: 15px; /* Increased padding for a larger text area */
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  padding: 10px;
+  border: 1px solid #ddd;
+  width: 200px;
+  border-radius: 5px;
   margin-right: 10px;
-  box-sizing: border-box;
-  font-size: 16px;
-  resize: none; /* Disable resizing */
-  height: 50px; /* Increased height */
 }
 
-/* Send button styling */
 .chat-input button {
-  padding: 15px 20px; /* Increased padding for the button */
+  background: #00796b;
+  color: #fff;
   border: none;
-  border-radius: 8px;
-  background-color: #45a049;
-  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
 .chat-input button:hover {
-  background-color: #144717;
+  background-color: #004d40;
 }
 
-/* Emoji picker styling */
 .emoji-picker {
   display: flex;
   gap: 10px;
-  position: absolute;
-  bottom: 70px; /* Positioned above the chat input */
-  left: 10px;
+  padding-top: 10px;
 }
 
 .emoji-picker span {
-  font-size: 24px;
+  font-size: 1.5rem;
   cursor: pointer;
-}
-
-.emoji-picker span:hover {
-  background-color: #f0f4f8;
-  border-radius: 50%;
-  padding: 5px;
-}
-
-/* Notification component styling */
-.notification-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  max-width: 300px;
-  z-index: 1000;
-  overflow: auto; /* Enable scroll if too many notifications */
-}
-
-.notification-close {
-  background-color: #f44336;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 50%;
-  cursor: pointer;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-.notification-close:hover {
-  background-color: #e53935;
-}
-
-.notification-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.notification-item {
-  margin-bottom: 10px;
-  font-size: 0.9rem;
-  color: #333;
-}
-/* src/Chat.css */
-
-/* Add any other existing styles here */
-
-/* Adjust the profile button for consistency with ProfilePage */
-.profile-button {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  background-color: #00796b; /* Teal color for the profile button */
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.profile-button:hover {
-  background-color: #004d40; /* Darker teal on hover */
-}
-
-/* Ensure the user list and chat content are aligned */
-.chat-body {
-  display: flex;
-}
-
-.user-list {
-  background: #f1f1f1;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.user-list .user {
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.user-list .user.active {
-  background-color: #e0f7fa; /* Light teal background for the active user */
 }

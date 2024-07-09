@@ -3,12 +3,12 @@ import React, { useState, useEffect } from 'react';
 import Message from './Message';
 import './Chat.css';
 
-const defaultProfilePicture = 'src/assets/user-icon.jpg';
+const defaultProfilePicture = './assets/user icon.jpg';
 
 const users = [
-  { id: 1, name: 'Alice', profilePicture: 'src/assets/user-icon.jpg'},
-  { id: 2, name: 'Bob', profilePicture: 'src/assets/user-icon.jpg' },
-  { id: 3, name: 'Charlie', profilePicture: 'src/assets/user-icon.jpg' }
+  { id: 1, name: 'Alice', profilePicture: './assets/user icon.jpg' },
+  { id: 2, name: 'Bob', profilePicture: './assets/user icon.jpg' },
+  { id: 3, name: 'Charlie', profilePicture: './assets/user icon.jpg' }
 ];
 
 const Chat = ({ onLogout, onProfile }) => {
@@ -43,7 +43,7 @@ const Chat = ({ onLogout, onProfile }) => {
   };
 
   return (
-    <div className="container chat-container">
+    <div className="chat-container">
       <div className="chat-header">
         <h2>Chat with {selectedUser.name}</h2>
         <button className="profile-button" onClick={() => onProfile(selectedUser)}>Profile</button>
