@@ -1,141 +1,258 @@
 /* src/LandingPage.css */
 body {
-   
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    overflow-x: hidden;
-     /* Prevent horizontal scroll */
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  overflow-x: hidden;
+}
+
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  color: #333;
+}
+
+.landing-header {
+  padding: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #ffb6c1, #add8e6); /* Gradient background for the navbar */
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Full width */
+  position: fixed; /* Fixed position at the top */
+  top: 0; /* Top alignment */
+  left: 0; /* Left alignment */
+  z-index: 1000; /* Ensure it's on top of other content */
+}
+
+.user-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.user-icon:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-right: 50px;
+}
+
+.nav-links li {
+  margin: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #00796b; /* Teal color for the links */
+  font-size: 16px;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #004d40; /* Darker teal on hover */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Text shadow on hover */
+}
+
+.landing-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 20px 20px 20px; /* Added top padding to avoid overlap with fixed navbar */
+  min-height: calc(100vh - 60px); /* Adjust for navbar height */
+}
+
+.ping-me-gif {
+  width: 150px;
+  height: auto;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.landing-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+  animation: fadeIn 2s ease-in-out; /* Animation for the title */
+}
+
+.landing-description {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  max-width: 600px;
+}
+
+.get-started-button {
+  background-color: #cb8c9c; /* Teal background */
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.get-started-button:hover {
+  border: 2px solid #ce4f88;
+  background-color: white; /* Darker teal on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+  color: black;
+}
+
+/* New sections added to the landing page */
+
+.about-section,
+.features-section,
+.testimonials-section,
+.contact-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.about-section h2,
+.features-section h2,
+.testimonials-section h2,
+.contact-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.about-section p,
+.features-section p,
+.testimonials-section p,
+.contact-section p {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto 20px auto;
+}
+
+.features-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.feature-item {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 30%;
+  min-width: 250px;
+}
+
+.testimonials-section .testimonial {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.contact-form label {
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.contact-form button {
+  background-color: #cb8c9c;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-form button:hover {
+  border: 2px solid #ce4f88;
+  background-color: white;
+  color: black;
+  transform: scale(1.05);
+}
+
+/* Info boxes section */
+.info-container {
+  display: flex;
+  justify-content: space-around;
+  height: 30vh;
+  padding: 20px;
+}
+
+.info-box {
+  background: linear-gradient(145deg, #73a3cb, #0850bb);
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.2), -8px -8px 15px rgba(255, 255, 255, 0.7);
+  padding: 20px;
+  width: 20%;
+  border-radius: 15px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.info-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 12px 12px 20px rgba(0, 0, 0, 0.25), -12px -12px 20px rgba(255, 255, 255, 0.75);
+}
+
+.info-box p {
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+.landing-footer {
+  background-color: #ffffff;
+  padding: 10px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  margin-top: auto; /* Pushes footer to the bottom */
+  width: 100%;
+}
+
+/* Keyframes for fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  
-  .landing-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    width: 100%;
-    color: #333;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .landing-header {
-    padding: 0;
-  }
-  
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(135deg, #ffb6c1, #add8e6); /* White background for the navbar */
-    padding: 10px 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 100%; /* Full width */
-    position: fixed; /* Fixed position at the top */
-    top: 0; /* Top alignment */
-    left: 0; /* Left alignment */
-    z-index: 1000; /* Ensure it's on top of other content */
-  }
-  
-  .user-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  .user-icon:hover {
-    transform: scale(1.1); /* Slightly enlarge on hover */
-  }
-  
-  .nav-links {
-    display: flex;
-    gap: 20px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    margin-right: 50px;
-  }
-  
-  .nav-links li {
-    margin: 0;
-  }
-  
-  .nav-links a {
-    text-decoration: none;
-    color: #00796b; /* Teal color for the links */
-    font-size: 16px;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-  }
-  
-  .nav-links a:hover {
-    color: #004d40; /* Darker teal on hover */
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Text shadow on hover */
-  }
-  
-  .landing-main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 100px 20px 20px 20px; /* Added top padding to avoid overlap with fixed navbar */
-    min-height: calc(100vh - 60px); /* Adjust for navbar height */
-  }
-  
-  .ping-me-gif {
-    width: 150px;
-    height: auto;
-    margin-bottom: 20px;
-    cursor: pointer;
-  }
-  
-  .landing-title {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #333;
-    animation: fadeIn 2s ease-in-out; /* Animation for the title */
-  }
-  
-  .landing-description {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    max-width: 600px;
-  }
-  
-  .get-started-button {
-    background-color: #cb8c9c; /* Teal background */
-    color: white;
-    border: none;
-    padding: 15px 25px;
-    border-radius: 10px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .get-started-button:hover {
-    background-color: #ce4f88; /* Darker teal on hover */
-    transform: scale(1.05); /* Slightly enlarge on hover */
-  }
-  
-  .landing-footer {
-    background-color: #ffffff;
-    padding: 10px;
-    text-align: center;
-    border-top: 1px solid #ddd;
-    margin-top: auto; /* Pushes footer to the bottom */
-    width: 100%; 
-  }
-  
-  /* Keyframes for fade-in animation */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
+}
