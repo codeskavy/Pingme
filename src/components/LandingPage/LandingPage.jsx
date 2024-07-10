@@ -16,8 +16,9 @@ const LandingPage = ({ onStartChat }) => {
           </ul>
         </nav>
       </header>
-
+    
       <main className="landing-main">
+        <div className='display-content'>
         <img src={'src/assets/chat-icon.gif'} alt="Ping Me GIF" className="ping-me-gif" onClick={onStartChat} />
         <h1 className="landing-title">Ping Me!</h1>
         <p className="landing-description">
@@ -26,7 +27,16 @@ const LandingPage = ({ onStartChat }) => {
         <button className="get-started-button" onClick={onStartChat}>
           Get Started
         </button>
+        </div>
+       
+      
+        <div className='display-photos'>
+        <img src={'src/assets/video-chat.png'}  alt="video-chat-gif" className="video-chat-gif"/>
+        <img src={'src/assets/video-chat1.webp'}  alt="video-chat1-gif" className="video-chat1-gif"/>
+        </div>
+      
       </main>
+
 
       <section id="about" className="about-section">
         <h2>About Ping Me</h2>
@@ -34,6 +44,18 @@ const LandingPage = ({ onStartChat }) => {
           Ping Me is a state-of-the-art messaging platform that allows you to stay connected with your loved ones. With a user-friendly interface and seamless integration, chatting has never been easier.
         </p>
       </section>
+
+      <div className="info-container">
+        <div className="info-box">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div className="info-box">
+          <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div className="info-box">
+          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+        </div>
+      </div>
 
       <section id="features" className="features-section">
         <h2>Features</h2>
@@ -85,22 +107,12 @@ const LandingPage = ({ onStartChat }) => {
         </form>
       </section>
 
-      <div className="info-container">
-        <div className="info-box">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-        <div className="info-box">
-          <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-        <div className="info-box">
-          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-        </div>
-      </div>
+    
 
       <footer className="landing-footer">
         <p>&copy; 2024 Ping Me. All rights reserved.</p>
       </footer>
-    </div>
+    </div >
   );
 };
 

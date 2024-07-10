@@ -29,7 +29,7 @@ body {
 h2 {
   margin: 0;
   font-size: 24px;
-  color:  #ce4f88; /* Vibrant Pink */
+color: #9B00D2; /* Vibrant Pink */
   font-weight: bold;
   margin-bottom: 20px;
 }
@@ -69,7 +69,7 @@ button {
   margin-top: 10px;
   border: none;
   border-radius: 8px;
-  background-color:  #cb8c9c; /* Vibrant Pink Background */
+  background-color: #9B00D2;/* Vibrant Pink Background */
   color: white;
   font-size: 16px;
   cursor: pointer;
@@ -78,7 +78,7 @@ button {
 
 /* Submit Button Hover */
 button:hover {
-  background-color: #ce4f88;/* Darker Pink on Hover */
+  background-color: #850bb1;/* Darker Pink on Hover */
   transform: scale(1.05); /* Slightly enlarge on hover */
 }
 

@@ -3,6 +3,7 @@ body {
   margin: 0;
   font-family: 'Arial', sans-serif;
   overflow-x: hidden;
+  /* Black and purple gradient */
 }
 
 .landing-container {
@@ -21,7 +22,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(135deg, #ffb6c1, #add8e6); /* Gradient background for the navbar */
+  background-color: #9B00D2;
+  /* Gradient background for the navbar */
   padding: 10px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 100%; /* Full width */
@@ -71,11 +73,11 @@ body {
 .landing-main {
   flex: 1;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   text-align: center;
-  padding: 100px 20px 20px 20px; /* Added top padding to avoid overlap with fixed navbar */
+  /* Added top padding to avoid overlap with fixed navbar */
   min-height: calc(100vh - 60px); /* Adjust for navbar height */
 }
 
@@ -101,23 +103,34 @@ body {
 }
 
 .get-started-button {
-  background-color: #cb8c9c; /* Teal background */
+  background-color: #9B00D2; /* Teal background */
   color: white;
   border: none;
   padding: 15px 25px;
   border-radius: 10px;
   font-size: 1.2rem;
   cursor: pointer;
+  width:auto;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .get-started-button:hover {
-  border: 2px solid #ce4f88;
+  border: 2px solid#9B00D2;
   background-color: white; /* Darker teal on hover */
   transform: scale(1.05); /* Slightly enlarge on hover */
   color: black;
 }
 
+.display-photos{
+  display: flex;
+  width: 30vw;
+  height:30vh;
+  flex-direction: column;
+  
+  margin-top: 0;
+  margin-bottom:120px;
+  padding-bottom: 50px;
+}
 /* New sections added to the landing page */
 
 .about-section,
@@ -191,7 +204,7 @@ body {
 }
 
 .contact-form button {
-  background-color: #cb8c9c;
+  background-color:#9B00D2;;
   color: white;
   border: none;
   padding: 15px;
@@ -202,7 +215,7 @@ body {
 }
 
 .contact-form button:hover {
-  border: 2px solid #ce4f88;
+  border: 2px solid #9B00D2;;
   background-color: white;
   color: black;
   transform: scale(1.05);
@@ -217,8 +230,14 @@ body {
 }
 
 .info-box {
-  background: linear-gradient(145deg, #73a3cb, #0850bb);
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.2), -8px -8px 15px rgba(255, 255, 255, 0.7);
+  /* background: linear-gradient(135deg,white, #9B00D2); */
+  background-color: white;
+ 
+
+
+  ; /* Purple and black gradient */
+  box-shadow: 8px 8px 15px rgba(155, 0, 210, 0.4), -8px -8px 15px rgba(155, 0, 210, 0.7);
+
   padding: 20px;
   width: 20%;
   border-radius: 15px;
@@ -228,11 +247,11 @@ body {
 
 .info-box:hover {
   transform: translateY(-10px);
-  box-shadow: 12px 12px 20px rgba(0, 0, 0, 0.25), -12px -12px 20px rgba(255, 255, 255, 0.75);
+  box-shadow: 12px 12px 20px rgba(155, 0, 210, 0.6), -12px -12px 20px rgba(155, 0, 210, 0.9);
 }
 
 .info-box p {
-  color: #ffffff;
+  color:black;
   font-size: 1.1rem;
 }
 
