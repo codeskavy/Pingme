@@ -60,7 +60,7 @@ body {
 
 .nav-links a {
   text-decoration: none;
-  color: #00796b; /* Teal color for the links */
+  color: white; /* Teal color for the links */
   font-size: 16px;
   transition: color 0.3s ease, text-shadow 0.3s ease;
 }
@@ -82,6 +82,8 @@ body {
 }
 
 .ping-me-gif {
+  padding-top: 50px;
+  padding-bottom:0;
   width: 150px;
   height: auto;
   margin-bottom: 20px;
@@ -181,12 +183,22 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
-
+.contact-section{
+  display:flex;
+  flex-direction: row;
+  justify-content:center;
+}
+.animated-image {
+  height: auto;
+  margin-right:100px;
+  margin-left:0;
+  width:auto;
+}
 .contact-form {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-width: 500px;
+  width: 500px;
   margin: 0 auto;
 }
 

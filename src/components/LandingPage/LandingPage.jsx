@@ -92,6 +92,10 @@ const LandingPage = ({ onStartChat }) => {
       </section>
 
       <section id="contact" className="contact-section">
+        <div className='animated-image'>
+          <img src={'src/assets/chat-gif.gif'}/>
+        </div>
+        <div className='details-form'>
         <h2>Contact Us</h2>
         <form className="contact-form">
           <label htmlFor="name">Name</label>
@@ -105,6 +109,8 @@ const LandingPage = ({ onStartChat }) => {
           
           <button type="submit">Send Message</button>
         </form>
+        </div>
+       
       </section>
 
     

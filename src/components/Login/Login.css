@@ -7,6 +7,27 @@ body {
   font-family: Arial, sans-serif;
 }
 
+.main-box{
+  display: flex;
+  flex-direction: row;
+}
+.title-signin{
+  display:flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  margin:80px;
+
+  
+}
+.title-signin h1{
+  font-size:3.5rem;
+  color:#850bb1;
+  font-weight: bolder;
+}
+.title-signin p{
+  font-size: 1.5rem;
+}
 
 /* Container Box */
 .container {
@@ -22,7 +43,7 @@ body {
   border-spacing: 20px;
   justify-content: center;
   height: 60vh;
-  margin-top: 50px;
+  margin-top: 100px;
 }
 
 /* Heading */

@@ -13,9 +13,11 @@ const Login = ({ onLogin }) => {
   };
 
   return (
-    <>
-    <div className='left'>
-      <img></img>
+    <div className='main-box'>
+
+    <div className='title-signin'>
+      <h1>PingMe</h1>
+      <p>Connect with friends and family in an easy way.<br/> Start chatting now!</p>
     </div>
      <div className="container">
       <h2>{isSignUp ? 'Sign Up' : 'Sign In'}</h2>
@@ -51,7 +53,7 @@ const Login = ({ onLogin }) => {
         </div>
       </form>
     </div>
-    </>
+    </div>
    
   );
 };
