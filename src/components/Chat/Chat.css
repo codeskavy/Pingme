@@ -32,7 +32,7 @@ body{
 
 .profile-button,
 .logout-button {
-  background: #cb8c9c;
+  background:#9B00D2;
   color: #fff;
   border: none;
   padding: 10px 15px;
@@ -44,7 +44,7 @@ body{
 
 .profile-button:hover,
 .logout-button:hover {
-  background-color: #ce4f88;
+  background-color: #8207ae;
 }
 
 .chat-body {
@@ -127,7 +127,7 @@ body{
 }
 
 .chat-input button { 
-  background-color: #cb8c9c;
+  background-color: #07742f;
   color: #fff;
   padding-right: 30px;
   border: none;
@@ -139,7 +139,7 @@ body{
 }
 
 .chat-input button:hover {
-  background-color: #ce4f88;
+  background-color: #044007;
 }
 
 .emoji-picker {

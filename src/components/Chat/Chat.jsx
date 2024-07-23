@@ -2,16 +2,17 @@ import React, { useState, useEffect } from 'react';
 import Message from '../Message/Message';
 import './Chat.css';
 
-const defaultProfilePicture =  'src/assets/user-icon.jpg' ;
+const defaultProfilePicture = 'src/assets/user-icon.jpg';
 
 const users = [
   { id: 1, name: 'Alice', profilePicture: 'src/assets/user-icon.jpg' },
-  { id: 2, name: 'Bob', profilePicture:  'src/assets/user-icon.jpg'  },
+  { id: 2, name: 'Bob', profilePicture: 'src/assets/user-icon.jpg' },
   { id: 3, name: 'Charlie', profilePicture: 'src/assets/user-icon.jpg' }
 ];
 
 const Chat = ({ onLogout, onProfile }) => {
   const [message, setMessage] = useState('');
+  const [file, setFile] = useState(null);
   const [messages, setMessages] = useState([]);
   const [selectedUser, setSelectedUser] = useState(users[0]);
 
@@ -30,9 +31,16 @@ const Chat = ({ onLogout, onProfile }) => {
   }, [selectedUser]);
 
   const handleSend = () => {
-    if (message.trim()) {
-      setMessages([...messages, { text: message, sender: 'You', profilePicture: defaultProfilePicture }]);
+    if (message.trim() || file) {
+      const newMessage = {
+        text: message,
+        file: file,
+        sender: 'You',
+        profilePicture: defaultProfilePicture
+      };
+      setMessages([...messages, newMessage]);
       setMessage('');
+      setFile(null);
       document.querySelector('.message-list').scrollTop = document.querySelector('.message-list').scrollHeight;
     }
   };
@@ -41,10 +49,14 @@ const Chat = ({ onLogout, onProfile }) => {
     setMessage(message + emoji);
   };
 
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
   return (
     <div className="chat-container">
       <div className="chat-header">
-        <h2> Chat with {selectedUser.name}</h2>
+        <h2>Chat with {selectedUser.name}</h2>
         <button className="profile-button" onClick={() => onProfile(selectedUser)}>Profile</button>
         <button className="logout-button" onClick={onLogout}>Logout</button>
       </div>
@@ -69,6 +81,7 @@ const Chat = ({ onLogout, onProfile }) => {
                 text={msg.text}
                 sender={msg.sender}
                 profilePicture={msg.profilePicture || defaultProfilePicture}
+                file={msg.file}
               />
             ))}
           </div>
@@ -78,6 +91,11 @@ const Chat = ({ onLogout, onProfile }) => {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Type your message..."
+            />
+            <input 
+              type="file" 
+              onChange={handleFileChange} 
+              accept="image/*,video/*"
             />
             <button onClick={handleSend}>Send</button>
           </div>
