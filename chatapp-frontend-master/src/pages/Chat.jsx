@@ -95,7 +95,7 @@ const Chat = ({ chatId, user }) => {
 
     if (!message.trim()) return;
 
-    // Emitting the message to the server
+   
     socket.emit(NEW_MESSAGE, { chatId, members, message });
     setMessage("");
   };
