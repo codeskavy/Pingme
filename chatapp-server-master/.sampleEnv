@@ -1,16 +1,16 @@
 
 
-MONGO_URI = mongodb+srv://kanikaverma0510:8KBCBoBtqMTtONt0@cluster0.ctm7dz1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+MONGO_URI = mongodb://localhost:27017
 
 JWT_SECRET=djgjkdshbgjkhfnjksdfhbnsjkdfsdhjfk
 
-ADMIN_SECRET_KEY=SuperSecureAdminKey123!
+ADMIN_SECRET_KEY= sample admin kjey
 
 NODE_ENV = DEVELOPMENT
 
-CLIENT_URL = https://pingme-z49a-git-main-kanika-vermas-projects.vercel.app/
+CLIENT_URL = frontend url
 
 
-CLOUDINARY_CLOUD_NAME= dn8qdumtw
-CLOUDINARY_API_KEY = 666757624753221
-CLOUDINARY_API_SECRET = -ddqMR8cfTPOoIqbFIP6FV1Xm8o
+CLOUDINARY_CLOUD_NAME= YOUR CLOUD NAME
+CLOUDINARY_API_KEY = YOUR CLOUD API kEY
+CLOUDINARY_API_SECRET =  YOUR CLOUD SECRET
