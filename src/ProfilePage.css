@@ -29,19 +29,19 @@
 }
 
 .back-button {
-  background-color: #00796b; /* Teal color for back button */
+  background-color: #38b9aa; /* Teal color for back button */
 }
 
 .back-button:hover {
-  background-color: #004d40; /* Darker teal on hover */
+  background-color: #0a8d77; /* Darker teal on hover */
 }
 
 .logout-button {
-  background-color: #ff6f61; /* Red color for the logout button */
+  background-color: #d23325; /* Red color for the logout button */
 }
 
 .logout-button:hover {
-  background-color: #e55b4f; /* Darker red on hover */
+  background-color: #ff1500; /* Darker red on hover */
 }
 
 .profile-main {

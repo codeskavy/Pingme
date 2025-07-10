@@ -1,5 +1,7 @@
 /* Message.css */
-
+body{
+  width: 100%;
+}
 .message {
     width: 100%;
     display: flex;

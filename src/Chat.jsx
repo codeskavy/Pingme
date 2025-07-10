@@ -45,7 +45,7 @@ const Chat = ({ onLogout, onProfile }) => {
   return (
     <div className="chat-container">
       <div className="chat-header">
-        <h2>Chat with {selectedUser.name}</h2>
+        <h2> Chat with {selectedUser.name}</h2>
         <button className="profile-button" onClick={() => onProfile(selectedUser)}>Profile</button>
         <button className="logout-button" onClick={onLogout}>Logout</button>
       </div>
