@@ -12,6 +12,7 @@ import {
   renameGroup,
   sendAttachments,
 } from "../controllers/chat.js";
+
 import {
   addMemberValidator,
   chatIdValidator,
@@ -21,34 +22,26 @@ import {
   sendAttachmentsValidator,
   validateHandler,
 } from "../lib/validators.js";
+
 import { isAuthenticated } from "../middlewares/auth.js";
 import { attachmentsMulter } from "../middlewares/multer.js";
 
-const app = express.Router();
+const router = express.Router();
 
-// After here user must be logged in to access the routes
+// All routes below require authentication
+router.use(isAuthenticated);
 
-app.use(isAuthenticated);
+// Group chat routes
+router.post("/new", newGroupValidator(), validateHandler, newGroupChat);
+router.get("/my", getMyChats);
+router.get("/my/groups", getMyGroups);
 
-app.post("/new", newGroupValidator(), validateHandler, newGroupChat);
+router.put("/addmembers", addMemberValidator(), validateHandler, addMembers);
+router.put("/removemember", removeMemberValidator(), validateHandler, removeMember);
+router.delete("/leave/:id", chatIdValidator(), validateHandler, leaveGroup);
 
-app.get("/my", getMyChats);
-
-app.get("/my/groups", getMyGroups);
-
-app.put("/addmembers", addMemberValidator(), validateHandler, addMembers);
-
-app.put(
-  "/removemember",
-  removeMemberValidator(),
-  validateHandler,
-  removeMember
-);
-
-app.delete("/leave/:id", chatIdValidator(), validateHandler, leaveGroup);
-
-// Send Attachments
-app.post(
+// Message routes
+router.post(
   "/message",
   attachmentsMulter,
   sendAttachmentsValidator(),
@@ -56,14 +49,13 @@ app.post(
   sendAttachments
 );
 
-// Get Messages
-app.get("/message/:id", chatIdValidator(), validateHandler, getMessages);
+router.get("/message/:id", chatIdValidator(), validateHandler, getMessages);
 
-// Get Chat Details, rename,delete
-app
+// Chat details, rename group, and delete chat
+router
   .route("/:id")
   .get(chatIdValidator(), validateHandler, getChatDetails)
   .put(renameValidator(), validateHandler, renameGroup)
   .delete(chatIdValidator(), validateHandler, deleteChat);
 
-export default app;
+export default router;

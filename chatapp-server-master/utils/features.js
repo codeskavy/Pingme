@@ -4,22 +4,28 @@ import { v4 as uuid } from "uuid";
 import { v2 as cloudinary } from "cloudinary";
 import { getBase64, getSockets } from "../lib/helper.js";
 
+// Cookie options for JWT
 const cookieOptions = {
-  maxAge: 15 * 24 * 60 * 60 * 1000,
+  maxAge: 15 * 24 * 60 * 60 * 1000, // 15 days
   sameSite: "none",
   httpOnly: true,
   secure: true,
 };
 
+// MongoDB Connection
 const connectDB = (uri) => {
   mongoose
-    .mongoose.connect(process.env.MONGO_URI)
-    .then((data) => console.log(`Connected to DB: ${data.connection.host}`))
+    .connect(uri || process.env.MONGO_URI)
+    .then((data) =>
+      console.log(`✅ Connected to MongoDB: ${data.connection.host}`)
+    )
     .catch((err) => {
-      throw err;
+      console.error("❌ MongoDB connection error:", err);
+      process.exit(1);
     });
 };
 
+// Send JWT token in HTTP-only cookie
 const sendToken = (res, user, code, message) => {
   const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
 
@@ -30,12 +36,14 @@ const sendToken = (res, user, code, message) => {
   });
 };
 
+// Emit socket.io event to specified users
 const emitEvent = (req, event, users, data) => {
   const io = req.app.get("io");
-  const usersSocket = getSockets(users);
-  io.to(usersSocket).emit(event, data);
+  const userSockets = getSockets(users);
+  io.to(userSockets).emit(event, data);
 };
 
+// Upload files to Cloudinary
 const uploadFilesToCloudinary = async (files = []) => {
   const uploadPromises = files.map((file) => {
     return new Promise((resolve, reject) => {
@@ -47,27 +55,25 @@ const uploadFilesToCloudinary = async (files = []) => {
         },
         (error, result) => {
           if (error) return reject(error);
-          resolve(result);
+          resolve({
+            public_id: result.public_id,
+            url: result.secure_url,
+          });
         }
       );
     });
   });
 
-  try {
-    const results = await Promise.all(uploadPromises);
-
-    const formattedResults = results.map((result) => ({
-      public_id: result.public_id,
-      url: result.secure_url,
-    }));
-    return formattedResults;
-  } catch (err) {
-    throw new Error("Error uploading files to cloudinary", err);
-  }
+  return await Promise.all(uploadPromises);
 };
 
-const deletFilesFromCloudinary = async (public_ids) => {
-  // Delete files from cloudinary
+// Delete files from Cloudinary
+const deletFilesFromCloudinary = async (public_ids = []) => {
+  const deletePromises = public_ids.map((public_id) =>
+    cloudinary.uploader.destroy(public_id, { resource_type: "auto" })
+  );
+
+  await Promise.all(deletePromises);
 };
 
 export {

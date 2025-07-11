@@ -3,7 +3,10 @@ import { Chat } from "../models/chat.js";
 import { Message } from "../models/message.js";
 import { User } from "../models/user.js";
 
-const createSingleChats = async (numChats) => {
+/**
+ * Create 1-on-1 chats between every possible pair of users
+ */
+const createSingleChats = async () => {
   try {
     const users = await User.find().select("_id");
 
@@ -14,22 +17,25 @@ const createSingleChats = async (numChats) => {
         chatsPromise.push(
           Chat.create({
             name: faker.lorem.words(2),
-            members: [users[i], users[j]],
+            members: [users[i]._id, users[j]._id],
+            groupChat: false,
           })
         );
       }
     }
 
     await Promise.all(chatsPromise);
-
-    console.log("Chats created successfully");
+    console.log("Single (1-on-1) chats created successfully");
     process.exit();
   } catch (error) {
-    console.error(error);
+    console.error("Error creating single chats:", error);
     process.exit(1);
   }
 };
 
+/**
+ * Create random group chats with 3–N users
+ */
 const createGroupChats = async (numChats) => {
   try {
     const users = await User.find().select("_id");
@@ -38,14 +44,11 @@ const createGroupChats = async (numChats) => {
 
     for (let i = 0; i < numChats; i++) {
       const numMembers = simpleFaker.number.int({ min: 3, max: users.length });
+
       const members = [];
-
-      for (let i = 0; i < numMembers; i++) {
-        const randomIndex = Math.floor(Math.random() * users.length);
-        const randomUser = users[randomIndex];
-
-        // Ensure the same user is not added twice
-        if (!members.includes(randomUser)) {
+      while (members.length < numMembers) {
+        const randomUser = users[Math.floor(Math.random() * users.length)];
+        if (!members.some((m) => m._id.equals(randomUser._id))) {
           members.push(randomUser);
         }
       }
@@ -53,23 +56,25 @@ const createGroupChats = async (numChats) => {
       const chat = Chat.create({
         groupChat: true,
         name: faker.lorem.words(1),
-        members,
-        creator: members[0],
+        members: members.map((m) => m._id),
+        creator: members[0]._id,
       });
 
       chatsPromise.push(chat);
     }
 
     await Promise.all(chatsPromise);
-
-    console.log("Chats created successfully");
+    console.log("Group chats created successfully");
     process.exit();
   } catch (error) {
-    console.error(error);
+    console.error("Error creating group chats:", error);
     process.exit(1);
   }
 };
 
+/**
+ * Create random messages across all chats
+ */
 const createMessages = async (numMessages) => {
   try {
     const users = await User.find().select("_id");
@@ -83,23 +88,25 @@ const createMessages = async (numMessages) => {
 
       messagesPromise.push(
         Message.create({
-          chat: randomChat,
-          sender: randomUser,
+          chat: randomChat._id,
+          sender: randomUser._id,
           content: faker.lorem.sentence(),
         })
       );
     }
 
     await Promise.all(messagesPromise);
-
     console.log("Messages created successfully");
     process.exit();
   } catch (error) {
-    console.error(error);
+    console.error("Error creating messages:", error);
     process.exit(1);
   }
 };
 
+/**
+ * Create messages inside a specific chat
+ */
 const createMessagesInAChat = async (chatId, numMessages) => {
   try {
     const users = await User.find().select("_id");
@@ -112,18 +119,17 @@ const createMessagesInAChat = async (chatId, numMessages) => {
       messagesPromise.push(
         Message.create({
           chat: chatId,
-          sender: randomUser,
+          sender: randomUser._id,
           content: faker.lorem.sentence(),
         })
       );
     }
 
     await Promise.all(messagesPromise);
-
-    console.log("Messages created successfully");
+    console.log(`Messages created in chat ${chatId}`);
     process.exit();
   } catch (error) {
-    console.error(error);
+    console.error("Error creating messages in a specific chat:", error);
     process.exit(1);
   }
 };

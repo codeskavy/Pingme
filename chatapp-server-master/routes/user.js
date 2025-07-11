@@ -20,37 +20,24 @@ import {
 import { isAuthenticated } from "../middlewares/auth.js";
 import { singleAvatar } from "../middlewares/multer.js";
 
-const app = express.Router();
+const router = express.Router();
 
-app.post("/new", singleAvatar, registerValidator(), validateHandler, newUser);
-app.post("/login", loginValidator(), validateHandler, login);
+// Register and login routes (no auth needed)
+router.post("/new", singleAvatar, registerValidator(), validateHandler, newUser);
+router.post("/login", loginValidator(), validateHandler, login);
 
-// After here user must be logged in to access the routes
+// Auth middleware for all routes below
+router.use(isAuthenticated);
 
-app.use(isAuthenticated);
+// Protected routes
+router.get("/me", getMyProfile);
+router.get("/logout", logout);
+router.get("/search", searchUser);
 
-app.get("/me", getMyProfile);
+router.put("/sendrequest", sendRequestValidator(), validateHandler, sendFriendRequest);
+router.put("/acceptrequest", acceptRequestValidator(), validateHandler, acceptFriendRequest);
 
-app.get("/logout", logout);
+router.get("/notifications", getMyNotifications);
+router.get("/friends", getMyFriends);
 
-app.get("/search", searchUser);
-
-app.put(
-  "/sendrequest",
-  sendRequestValidator(),
-  validateHandler,
-  sendFriendRequest
-);
-
-app.put(
-  "/acceptrequest",
-  acceptRequestValidator(),
-  validateHandler,
-  acceptFriendRequest
-);
-
-app.get("/notifications", getMyNotifications);
-
-app.get("/friends", getMyFriends);
-
-export default app;
+export default router;

@@ -10,7 +10,19 @@ const UserItem = ({
   isAdded = false,
   styling = {},
 }) => {
+  // Safety check for user object
+  if (!user) {
+    console.warn('UserItem received undefined user');
+    return null;
+  }
+
   const { name, _id, avatar } = user;
+
+  // Safety check for required fields
+  if (!_id) {
+    console.warn('UserItem received user without _id:', user);
+    return null;
+  }
 
   return (
     <ListItem>
@@ -21,12 +33,19 @@ const UserItem = ({
         width={"100%"}
         {...styling}
       >
-        <Avatar src={transformImage(avatar)} />
+        <Avatar 
+          src={avatar ? transformImage(avatar) : undefined}
+          alt={name || 'User'}
+          onError={(e) => {
+            // Fallback to default avatar on error
+            e.target.src = 'https://www.w3schools.com/howto/img_avatar.png';
+          }}
+        />
 
         <Typography
           variant="body1"
           sx={{
-            flexGlow: 1,
+            flexGrow: 1, // Fixed typo: was "flexGlow"
             display: "-webkit-box",
             WebkitLineClamp: 1,
             WebkitBoxOrient: "vertical",
@@ -35,7 +54,7 @@ const UserItem = ({
             width: "100%",
           }}
         >
-          {name}
+          {name || 'Unknown User'}
         </Typography>
 
         <IconButton
