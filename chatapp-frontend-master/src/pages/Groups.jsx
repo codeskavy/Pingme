@@ -28,6 +28,7 @@ import { bgGradient, matBlack } from "../constants/color";
 import { useDispatch, useSelector } from "react-redux";
 import UserItem from "../components/shared/UserItem";
 import { useAsyncMutation, useErrors } from "../hooks/hook";
+import { samepleChats as sampleGroups } from "../constants/sampleData";
 import {
   useChatDetailsQuery,
   useDeleteChatMutation,
@@ -51,8 +52,13 @@ const Groups = () => {
 
   const { isAddMember } = useSelector((state) => state.misc);
 
-  const myGroups = useMyGroupsQuery("");
-
+  const myGroups = {
+  data: {
+    groups: sampleGroups,
+  },
+  isLoading: false,
+  isError: false,
+};
   const groupDetails = useChatDetailsQuery(
     { chatId, populate: true },
     { skip: !chatId }
