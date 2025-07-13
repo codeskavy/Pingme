@@ -1,35 +1,30 @@
 import { faker } from "@faker-js/faker";
 import { User } from "../models/user.js";
 
-/**
- * Create random users with fake data.
- * All users will have password: 'password' (will be hashed in pre-save hook)
- */
 const createUser = async (numUsers) => {
   try {
     const usersPromise = [];
 
     for (let i = 0; i < numUsers; i++) {
-      const user = User.create({
+      const tempUser = User.create({
         name: faker.person.fullName(),
-        username: faker.internet.userName().toLowerCase() + faker.string.numeric(3),
+        username: faker.internet.userName(),
         bio: faker.lorem.sentence(10),
-        password: "password", // will be hashed
+        password: "password",
         avatar: {
           url: faker.image.avatar(),
-          public_id: faker.string.uuid(),
+          public_id: faker.system.fileName(),
         },
       });
-
-      usersPromise.push(user);
+      usersPromise.push(tempUser);
     }
 
     await Promise.all(usersPromise);
 
-    console.log(`✅ ${numUsers} Users created successfully`);
-    process.exit(0);
+    console.log("Users created", numUsers);
+    process.exit(1);
   } catch (error) {
-    console.error("❌ Error creating users:", error);
+    console.error(error);
     process.exit(1);
   }
 };
